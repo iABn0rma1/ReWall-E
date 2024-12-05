@@ -92,12 +92,17 @@ class owner(commands.Cog, name="owner"):
         # Assign the role to the member
         try:
             await member.add_roles(role, reason=f"Assigned by {ctx.author}")
-            await ctx.send(f"Assigned **{role_name}** to {member.mention}")
+            message = await ctx.send(f"Assigned **{role_name}** to {member.mention}")
+            # Wait for 3 seconds and then delete the message
+            await asyncio.sleep(3)
+            await message.delete()
         except discord.Forbidden:
             await ctx.send("I don't have permissions to assign roles.")
         except Exception as e:
             await ctx.send(f"Error assigning role: {e}")
     
+
+
     
     @commands.command()
     @commands.is_owner()
