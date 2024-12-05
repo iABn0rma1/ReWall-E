@@ -61,6 +61,9 @@ class owner(commands.Cog, name="owner"):
     
 
     
+    
+
+    
 
     @commands.command()
     @commands.is_owner()
